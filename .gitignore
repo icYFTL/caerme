@@ -122,3 +122,6 @@ dist
 
 # TernJS port file
 .tern-port
+
+default.conf
+kekos.team.conf
