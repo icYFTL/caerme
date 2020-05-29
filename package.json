@@ -5,11 +5,16 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "deploy": "sftp-deploy"
   },
   "dependencies": {
+    "axios": "^0.19.2",
     "core-js": "^3.6.5",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "vue-cookies": "^1.7.0",
+    "vue-number-animation": "^1.0.5",
+    "vue-router": "^3.3.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.4.0",
