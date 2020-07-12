@@ -1,4 +1,3 @@
-# caerme
-[![Build Status](https://travis-ci.com/icYFTL/caerme.svg?branch=master)](https://travis-ci.com/icYFTL/caerme)
+# Caerme
 
-Vue js site of CTF team
+A `Caerme` team site based on `VueJS` front-end and `Python` back-end. 

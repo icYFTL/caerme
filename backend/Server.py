@@ -1,16 +1,20 @@
-from flask import Flask, make_response
+from flask import Flask, make_response, render_template
 import requests
 from bs4 import BeautifulSoup
 import re
 from threading import Thread
 import time
+import json
 
-app = Flask(__name__)
+api = Flask(__name__)
 
 headers = {'Access-Control-Allow-Origin': '*'}
 
 data = dict()
 data['Cáerme'] = {}
+
+config = json.load(open('config.json', 'r'))
+api.config["APPLICATION_ROOT"] = config['url_prefix']
 
 
 def update(forever=False):
@@ -32,7 +36,8 @@ def update(forever=False):
         soup = BeautifulSoup(
             r.post('https://ctftime.org/team/list/', {'csrfmiddlewaretoken': csrf, 'team_name': 'Cáerme'}).text, 'lxml')
 
-        temp = str(soup.find('p', attrs={'align': 'left'})).replace('<p align="left">Overall rating place: <b>', '').strip()
+        temp = str(soup.find('p', attrs={'align': 'left'})).replace('<p align="left">Overall rating place: <b>',
+                                                                    '').strip()
         data['Cáerme'].update({'world_rating': re.sub('</b>.*</p>', '', temp)})
 
         soup = BeautifulSoup(r.get('https://ctftime.org/stats/2020?page=1').text, 'lxml')
@@ -50,11 +55,10 @@ def update(forever=False):
 
 update()
 
-th = Thread(target=update, args=(True,))
-th.start()
+Thread(target=update, args=(True,)).start()
 
 
-@app.route('/get/rating/2020/ru/<team>', methods=['GET'])
+@api.route('/get/rating/2020/ru/<team>', methods=['GET'])
 def get_ru_rating(team):
     if team == 'Cáerme':
         resp = make_response(data['Cáerme']['ru_rating'])
@@ -65,7 +69,7 @@ def get_ru_rating(team):
     return resp
 
 
-@app.route('/get/rating/2020/<team>', methods=['GET'])
+@api.route('/get/rating/2020/<team>', methods=['GET'])
 def get_rating(team):
     if team == 'Cáerme':
         resp = make_response(data['Cáerme']['world_rating'])
@@ -76,7 +80,7 @@ def get_rating(team):
     return resp
 
 
-@app.route('/get/pts/2020/<team>', methods=['GET'])
+@api.route('/get/pts/2020/<team>', methods=['GET'])
 def get_pts(team):
     if team == 'Cáerme':
         resp = make_response(data['Cáerme']['pts'])
@@ -87,4 +91,15 @@ def get_pts(team):
     return resp
 
 
-app.run('localhost', 8012)
+app = Flask(__name__, static_url_path='',
+            static_folder='static',
+            template_folder='templates')
+
+
+@app.route('/', methods=['GET'])
+def show():
+    return render_template('index.html')
+
+
+Thread(target=api.run, args=('localhost', 8012, config['debug'])).start()
+app.run('localhost', 8013, config['debug'])

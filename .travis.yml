@@ -3,5 +3,14 @@ node_js:
 - node
 cache: npm
 script:
+  - cd frontend
   - npm run build
+  - cd dist
+  - mkdir templates
+  - mkdir static
+  - mv index.html templates/
+  - mv css fonts img js favicon.ico static/
+  - cd ../../backend/
+  - mv config.json docker-compose.yml dockerfile requirements.txt Server.py ../frontend/dist
+  - cd ../frontend
   - npm run deploy

@@ -1,0 +1,6 @@
+# Misc
+venv/
+.DS_Store
+static/
+templates/
+.idea/
