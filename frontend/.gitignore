@@ -123,3 +123,4 @@ dist
 default.conf
 kekos.team.conf
 .DS_Store
+package-lock.json

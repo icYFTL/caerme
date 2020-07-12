@@ -4,6 +4,7 @@ node_js:
 cache: npm
 script:
   - cd frontend
+  - npm install
   - npm run build
   - cd dist
   - mkdir templates
