@@ -26,6 +26,9 @@ def update():
         sleep(86400)
 
 
+update()
+
+
 @app.route('/', methods=['GET'])
 def show():
     global ru_rating, world_rating, pts
