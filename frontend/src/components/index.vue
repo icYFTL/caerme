@@ -22,7 +22,8 @@
 <script>
     import Counter from "./counter";
     import top_bar from "./top_bar";
-    import Vue from 'vue'
+    import Vue from 'vue';
+    import axios from 'axios'
     //import Players from "@/components/players";
 
 
@@ -55,9 +56,13 @@
             else
                 Vue.$cookies.set('theme', 'white');
 
-            this.numberTo1 = parseInt(Vue.$cookies.get('ru_rating')) || 0;
-            this.numberTo2 = parseInt(Vue.$cookies.get('world_rating')) || 0;
-            this.numberTo3 = parseInt(Vue.$cookies.get('pts')) || 0;
+
+            await axios.get("https://caerme.icyftl.ru/ctftime/teams/get/team/121175/id").then((response) => {
+                this.numberTo1 = parseInt(response.data["ru_rating"]);
+                this.numberTo2 = parseInt(response.data["rating"][0][new Date().getFullYear().toString()]["rating_place"]);
+                this.numberTo3 = parseInt(response.data["rating"][0][new Date().getFullYear().toString()]["rating_points"]);
+            })
+
 
             this.$refs.PTS.playAnimation();
             this.$refs.RuRating.playAnimation();

@@ -30,16 +30,10 @@ def update():
 Thread(target=update).start()
 
 
-@app.route('/', methods=['GET'])
+@app.route('/info', methods=['GET'])
 def show():
     global ru_rating, world_rating, pts
-    resp = make_response(render_template('index.html'))
-
-    resp.set_cookie('ru_rating', ru_rating)
-    resp.set_cookie('world_rating', world_rating)
-    resp.set_cookie('pts', pts)
-
-    return resp
+    return json.dumps({'ru_rating': ru_rating, 'world_rating': world_rating, 'pts': pts})
 
 
 app.run('localhost', 8013, False)
