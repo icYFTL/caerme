@@ -59,8 +59,8 @@
 
             await axios.get("https://caerme.icyftl.ru/info").then((response) => {
                 this.numberTo1 = parseInt(response.data["ru_rating"]);
-                this.numberTo2 = parseInt(response.data["rating"][0][new Date().getFullYear().toString()]["rating_place"]);
-                this.numberTo3 = parseInt(response.data["rating"][0][new Date().getFullYear().toString()]["rating_points"]);
+                this.numberTo2 = parseInt(response.data["world_rating"]);
+                this.numberTo3 = parseInt(response.data["pts"]);
             })
 
 

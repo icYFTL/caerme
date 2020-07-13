@@ -1,4 +1,4 @@
-from flask import Flask, make_response, render_template
+from flask import Flask
 import requests
 import json
 from time import sleep
@@ -12,6 +12,7 @@ app = Flask(__name__, static_url_path='',
 ru_rating = 0
 world_rating = 0
 pts = 0
+
 
 
 def update():
