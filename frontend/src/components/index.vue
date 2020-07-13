@@ -23,7 +23,6 @@
     import Counter from "./counter";
     import top_bar from "./top_bar";
     import Vue from 'vue'
-    import axios from 'axios'
     //import Players from "@/components/players";
 
 
@@ -55,21 +54,10 @@
             }
             else
                 Vue.$cookies.set('theme', 'white');
-            const ru_rating_url = 'http://127.0.0.1:8012/get/rating/2020/ru/Cáerme';
-            const world_rating_url = 'http://127.0.0.1:8012/get/rating/2020/Cáerme';
-            const pts_url = 'http://127.0.0.1:8012/get/pts/2020/Cáerme';
 
-            await axios.get(ru_rating_url).then((response) => {
-                this.numberTo1 = response.data;
-            })
-
-            await axios.get(world_rating_url).then((response) => {
-                this.numberTo2 = response.data;
-            })
-
-            await axios.get(pts_url).then((response) => {
-                this.numberTo3 = response.data;
-            })
+            this.numberTo1 = parseInt(Vue.$cookies.get('ru_rating')) || 0;
+            this.numberTo2 = parseInt(Vue.$cookies.get('world_rating')) || 0;
+            this.numberTo3 = parseInt(Vue.$cookies.get('pts')) || 0;
 
             this.$refs.PTS.playAnimation();
             this.$refs.RuRating.playAnimation();

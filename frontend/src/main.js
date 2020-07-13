@@ -1,14 +1,12 @@
 import Vue from 'vue'
 import VueNumber from "vue-number-animation";
 import App from './App.vue'
-import axios from 'axios'
 import VueRouter from 'vue-router'
 import VueCookies from 'vue-cookies'
 
 Vue.use(VueCookies)
 Vue.use(VueNumber);
 Vue.use(VueRouter)
-Vue.use(axios)
 Vue.config.productionTip = false
 
 Vue.$cookies.config('7d')
