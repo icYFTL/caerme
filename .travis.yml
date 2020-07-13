@@ -12,6 +12,6 @@ script:
   - mv index.html templates/
   - mv css fonts img js favicon.ico static/
   - cd ../../backend/
-  - mv config.json docker-compose.yml dockerfile requirements.txt Server.py ../frontend/dist
+  - mv docker-compose.yml dockerfile requirements.txt Server.py ../frontend/dist
   - cd ../frontend
   - npm run deploy
