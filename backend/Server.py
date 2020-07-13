@@ -3,6 +3,7 @@ import requests
 import json
 from time import sleep
 from datetime import datetime
+from threading import Thread
 
 app = Flask(__name__, static_url_path='',
             static_folder='static',
@@ -26,7 +27,7 @@ def update():
         sleep(86400)
 
 
-update()
+Thread(target=update).start()
 
 
 @app.route('/', methods=['GET'])
