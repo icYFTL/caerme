@@ -5,7 +5,6 @@ services:
     build: .
     command: python3 Server.py
     ports:
-      - 8012:8012
       - 8013:8013
     network_mode: host
     container_name: caerme
