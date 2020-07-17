@@ -81,6 +81,8 @@
 </script>
 
 <style scoped>
+    @import url('https://fonts.googleapis.com/css2?family=Red+Rose&display=swap');
+
     @font-face {
         font-family: 'Chocolate';
         src: url('../assets/fonts/painting-with-chocolate.regular-webfont.woff2') format('woff2');
@@ -150,7 +152,7 @@
     .index h2 {
         margin-top: -20px;
         font-weight: normal;
-        font-family: Optima, sans-serif;
+        font-family: 'Red Rose', sans-serif;
         transition: text-shadow 0.5s ease-in-out;
     }
 
