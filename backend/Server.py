@@ -19,12 +19,13 @@ def update():
     global ru_rating, world_rating, pts
     while True:
         data = json.loads(requests.get('https://icyftl.ru/ctftime/teams/get/team/121175/id').text)
-        ru_rating = data['country_place']
-        world_rating = data['rating'][0][str(datetime.now().year)]['rating_place']
-        pts = 0
-        for x in data['rating']:
-            for key in x:
-                pts += int(x[key]['rating_points'])
+        ru_rating = data.get('country_place')
+        if data['rating']:
+            world_rating = data['rating'][0][str(datetime.now().year)]['rating_place']
+            pts = 0
+            for x in data['rating']:
+                for key in x:
+                    pts += int(x[key]['rating_points'])
         sleep(86400)
 
 
