@@ -3,7 +3,7 @@ services:
   server:
     image: caerme
     build: .
-    command: python3 Server.py
+    command: python3 server.py
     ports:
       - 8013:8013
     network_mode: host

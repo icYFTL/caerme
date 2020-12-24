@@ -4,12 +4,15 @@ import App from './App.vue'
 import VueRouter from 'vue-router'
 import VueCookies from 'vue-cookies'
 import axios from 'axios';
+import Donut from 'vue-css-donut-chart';
+import 'vue-css-donut-chart/dist/vcdonut.css';
 
 Vue.use(VueCookies)
-Vue.use(VueNumber);
+Vue.use(VueNumber)
 Vue.use(VueRouter)
 Vue.use(axios)
 Vue.config.productionTip = false
+Vue.use(Donut)
 
 Vue.$cookies.config('7d')
 
