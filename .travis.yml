@@ -8,6 +8,6 @@ script:
   - npm run build
   - cd dist
   - cd ../../backend/
-  - mv docker-compose.yml dockerfile requirements.txt Server.py ../frontend/dist
+  - mv docker-compose.yml dockerfile requirements.txt server.py ../frontend/dist
   - cd ../frontend
   - npm run deploy

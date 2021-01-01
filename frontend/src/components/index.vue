@@ -98,18 +98,18 @@
         font-style: normal;
     }
 
-    .white {
-        transition: all ease-in-out 1s;
-        --default_color: black;
-        background-blend-mode: hard-light;
-        --bg-color: white;
-    }
 
+    .white {
+      transition: all ease-in-out 1s;
+      --default_color: black;
+      background-blend-mode: hard-light;
+      --bg-color: white;
+    }
     .black {
-        transition: all ease-in-out 1s;
-        --default_color: white;
-        --bg-color: black;
-        background-blend-mode: difference;
+      transition: all ease-in-out 1s;
+      --default_color: white;
+      --bg-color: black;
+      background-blend-mode: difference;
     }
 
     body {
@@ -117,6 +117,9 @@
         background-repeat: no-repeat;
         background-color: var(--bg-color);
         background-image: url("../assets/pics/bg.png");
+        /*filter: brightness(var(--bg-brightness)); Doesnt work yet */
+
+
     }
 
     .index {
