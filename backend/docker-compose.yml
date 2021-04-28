@@ -1,10 +1,10 @@
 version: "3"
 services:
   server:
-    image: caerme
+    image: caerme_backend
+    restart: always
     build: .
     command: python3 server.py
     ports:
       - 8013:8013
     network_mode: host
-    container_name: caerme
